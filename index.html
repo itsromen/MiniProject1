@@ -279,6 +279,148 @@
         button:active {
             animation: shake 0.3s ease-in-out;
         }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--background);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .tag {
+            background: var(--background);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .project-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            margin-bottom: 3rem;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-category li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .experience {
+            margin-top: 3rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--background);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .experience-item h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
@@ -290,18 +432,185 @@
 
     <section id="about">
         <h1>About Me</h1>
-        <p>Welcome to my portfolio! I am a passionate developer with expertise in web development.</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="intro">Hello! I'm Alex Chen, a Full Stack Developer based in Vancouver, Canada. With over 5 years of experience in web development, I specialize in creating responsive, user-friendly applications that solve real-world problems.</p>
+                
+                <p>After graduating with a Computer Science degree from UBC, I've worked with various startups and established companies, helping them build scalable web solutions. I'm passionate about clean code, user experience, and staying up-to-date with the latest technology trends.</p>
+            </div>
+
+            <div class="skills-container">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React.js</li>
+                            <li>Vue.js</li>
+                            <li>TypeScript</li>
+                            <li>Sass/SCSS</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li>Node.js</li>
+                            <li>Python</li>
+                            <li>PHP</li>
+                            <li>Java</li>
+                            <li>RESTful APIs</li>
+                            <li>GraphQL</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <ul>
+                            <li>MongoDB</li>
+                            <li>PostgreSQL</li>
+                            <li>MySQL</li>
+                            <li>Redis</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Tools & Others</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>Docker</li>
+                            <li>AWS</li>
+                            <li>CI/CD</li>
+                            <li>Agile/Scrum</li>
+                            <li>Jest/Mocha</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <h2>Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Senior Frontend Developer</h3>
+                    <p class="company">TechCorp Solutions • 2021-Present</p>
+                    <p>Led a team of 5 developers in building modern web applications using React and TypeScript.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Full Stack Developer</h3>
+                    <p class="company">StartUp Innovation • 2019-2021</p>
+                    <p>Developed and maintained multiple client projects using the MERN stack.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
         <h2>My Projects</h2>
-        <div class="project">
-            <h3>Project 1</h3>
-            <p>Description of project 1 goes here.</p>
-        </div>
-        <div class="project">
-            <h3>Project 2</h3>
-            <p>Description of project 2 goes here.</p>
+        <div class="projects-grid">
+            <div class="project">
+                <img src="path/to/ecommerce-screenshot.jpg" alt="E-commerce Platform" class="project-image">
+                <div class="project-content">
+                    <h3>E-commerce Platform</h3>
+                    <p>A full-stack e-commerce solution built with React and Node.js. Features include user authentication, product management, and payment integration.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Stripe</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/ecommerce" target="_blank">View Code</a>
+                        <a href="https://ecommerce-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="path/to/weather-app.jpg" alt="Weather Dashboard" class="project-image">
+                <div class="project-content">
+                    <h3>Weather Dashboard</h3>
+                    <p>Real-time weather application using OpenWeather API. Displays current conditions, forecasts, and weather maps with interactive features.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">APIs</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/weather-app" target="_blank">View Code</a>
+                        <a href="https://weather-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="path/to/task-manager.jpg" alt="Task Management App" class="project-image">
+                <div class="project-content">
+                    <h3>Task Management App</h3>
+                    <p>Collaborative task management tool with real-time updates, drag-and-drop interface, and team collaboration features.</p>
+                    <div class="project-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Vuex</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/task-manager" target="_blank">View Code</a>
+                        <a href="https://taskapp-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="path/to/fitness-tracker.jpg" alt="Fitness Tracker" class="project-image">
+                <div class="project-content">
+                    <h3>Fitness Tracker</h3>
+                    <p>Mobile-responsive fitness tracking application with workout planning, progress monitoring, and data visualization.</p>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">GraphQL</span>
+                        <span class="tag">D3.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/fitness-tracker" target="_blank">View Code</a>
+                        <a href="https://fitness-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="path/to/chat-app.jpg" alt="Real-time Chat Application" class="project-image">
+                <div class="project-content">
+                    <h3>Real-time Chat Application</h3>
+                    <p>Instant messaging platform with real-time communication, file sharing, and end-to-end encryption.</p>
+                    <div class="project-tags">
+                        <span class="tag">Socket.io</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">WebRTC</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/chat-app" target="_blank">View Code</a>
+                        <a href="https://chat-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="path/to/portfolio.jpg" alt="Portfolio Website" class="project-image">
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>Modern portfolio website with responsive design, smooth animations, and interactive elements.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/portfolio" target="_blank">View Code</a>
+                        <a href="https://portfolio-demo.com" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
