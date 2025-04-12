@@ -14,6 +14,127 @@
             --light: #ecf0f1;      /* Off-white */
         }
 
+            html[data-theme='dark'] {
+        --primary: #4a6fa5;       /* Lighter blue for headings */
+        --secondary: #61dafb;     /* Brighter blue for interactive elements */
+        --accent: #ff6b6b;        /* Brighter red for accents */
+        --background: #121212;    /* Dark background */
+        --text: #f0f2f5;          /* Very light gray for main text */
+        --light: #2d3748;         /* Dark navy for containers */
+    }
+
+        html[data-theme='dark'] h1, 
+        html[data-theme='dark'] h2, 
+        html[data-theme='dark'] h3 {
+            color: var(--secondary);  /* Make headings brighter blue in dark mode */
+        }
+
+        html[data-theme='dark'] .project,
+        html[data-theme='dark'] section,
+        html[data-theme='dark'] .modal-content {
+            background-color: #1e2330;  /* Slightly blue-ish dark for containers */
+            color: var(--text);
+        }
+
+        html[data-theme='dark'] p,
+        html[data-theme='dark'] li,
+        html[data-theme='dark'] label {
+            color: #e2e8f0;  /* Ensure paragraph text is light enough */
+        }
+
+        html[data-theme='dark'] .intro {
+            color: #c8e6ff;  /* Make intro paragraph stand out more */
+        }
+
+        html[data-theme='dark'] .tag {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            font-weight: 500; /* Make tag text slightly bolder */
+        }
+
+        html[data-theme='dark'] .skill-category,
+        html[data-theme='dark'] .experience-item {
+            background-color: #2d3748;  /* Darker containers for skills and experience */
+        }
+
+        html[data-theme='dark'] .skill-category h3 {
+            color: var(--secondary);  /* Brighter blue for skill category headings */
+        }
+
+        html[data-theme='dark'] form input,
+        html[data-theme='dark'] form textarea {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a5568;
+        }
+
+        html[data-theme='dark'] .project-links a {
+            color: var(--secondary);  /* Brighter blue for links */
+            font-weight: 500;  /* Make links slightly bolder */
+        }
+
+        /* Improve visibility of social links in dark mode */
+        html[data-theme='dark'] .social-links a {
+            color: #e2e8f0;
+        }
+
+        html[data-theme='dark'] .social-links a:hover {
+            background-color: #2d3748;
+            color: var(--secondary);
+        }
+
+        /* Add a subtle border to sections for better separation */
+        html[data-theme='dark'] section {
+            border: 1px solid #2d3748;
+        }
+
+        /* Theme toggle button styles */
+        #theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        
+        #theme-toggle button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--secondary);
+        }
+        
+        #theme-toggle button:hover {
+            transform: translateY(-5px) rotate(10deg);
+        }
+        
+        .sun-icon, .moon-icon {
+            position: absolute;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        html:not([data-theme='dark']) .sun-icon {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        
+        html[data-theme='dark'] .moon-icon {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        
+        html[data-theme='dark'] .sun-icon,
+        html:not([data-theme='dark']) .moon-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         body {
             font-family: 'Inter', Arial, sans-serif;
             line-height: 1.6;
@@ -53,7 +174,7 @@
         }
 
         /* Responsive styles */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 768px) {
             nav {
                 flex-direction: column;
                 align-items: center;
@@ -158,21 +279,29 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        form input, form textarea {
+        form input, 
+        form textarea {
             width: 100%;
             padding: 0.8rem;
             margin: 0.5rem 0;
             border: 2px solid #eee;
             border-radius: 6px;
             transition: border-color 0.3s ease;
+            box-sizing: border-box; /* This ensures padding is included in width calculation */
         }
 
-        form input:focus, form textarea:focus {
-            outline: none;
-            border-color: var(--secondary);
-            animation: borderPulse 2s infinite;
+        html[data-theme='dark'] form input,
+        html[data-theme='dark'] form textarea {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a5568;
         }
 
+        form textarea {
+            resize: none; /* This prevents the textarea from being resizable */
+            min-height: 150px; /* Set a fixed height that's comfortable for messages */
+        }
+        
         /* Animation keyframes */
         @keyframes slideIn {
             from {
@@ -752,6 +881,26 @@
     <footer>
         <p style="text-align: center;">&copy; 2025 My Portfolio. All rights reserved.</p>
     </footer>
+
+    <div id="theme-toggle">
+        <button aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
     <script>
         const modal = document.getElementById('socialModal');
         const btn = document.getElementById('findMeBtn');
@@ -882,6 +1031,41 @@
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+            }
+        });
+
+            // Theme toggle functionality
+        const themeToggle = document.querySelector('#theme-toggle button');
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Use dark theme if user prefers dark color scheme
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Add animation effect when changing theme
+            document.body.style.transition = 'background-color 0.5s ease';
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 500);
+        });
+        
+        // Listen for OS theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
             }
         });
     </script>
