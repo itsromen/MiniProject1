@@ -5,15 +5,27 @@
     <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <style>
+        :root {
+            --primary: #2d3e50;     /* Deep blue-gray */
+            --secondary: #3498db;    /* Bright blue */
+            --accent: #e74c3c;      /* Coral red */
+            --background: #f5f6fa;  /* Light gray-blue */
+            --text: #2c3e50;       /* Dark blue-gray */
+            --light: #ecf0f1;      /* Off-white */
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             padding-top: 60px; /* Add padding to prevent content from going under nav */
+            background-color: var(--background);
+            color: var(--text);
         }
+
         nav {
-            background-color: #333;
+            background-color: var(--primary);
             padding: 1rem;
             position: fixed;
             top: 0;
@@ -22,17 +34,20 @@
             z-index: 1000;
             display: flex;
             justify-content: space-around;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
+
         nav a {
-            color: white;
+            color: var(--light);
             text-decoration: none;
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-weight: 500;
         }
+
         nav a:hover {
-            background-color: #555;
+            background-color: var(--secondary);
             transform: translateY(-2px);
         }
 
@@ -67,13 +82,14 @@
 
         .modal-content {
             background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem;
+            border-radius: 12px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             min-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .close-button {
@@ -95,14 +111,61 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem;
+            padding: 1rem;
             text-decoration: none;
             color: #333;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
         .social-links a:hover {
-            color: #0066cc;
+            background-color: var(--background);
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        section {
+            background-color: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 1200px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+        }
+
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 2px solid #eee;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
         }
     </style>
 </head>
